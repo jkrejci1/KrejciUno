@@ -39,7 +39,7 @@ app.use(express.static('views'))
 
 //DON'T DELETE; THIS IS FOR THE FINAL PROJECT PROPOSAL
 app.get('/', (request, response) => {
-	response.render('/views/index.html')
+	response.render('index.ejs')
 })
 
 
