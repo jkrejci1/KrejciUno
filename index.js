@@ -37,11 +37,15 @@ app.use(express.static('views'))
 */
 
 
-//DON'T DELETE; THIS IS FOR THE FINAL PROJECT PROPOSAL
+//Generating the home page
 app.get('/', (request, response) => {
 	response.render('index.ejs')
 })
 
+//Generating the game page
+app.get('/game', (request, response) => {
+	response.render('game.ejs')
+})
 
 // Custom 404 page.
 app.use((request, response) => {
