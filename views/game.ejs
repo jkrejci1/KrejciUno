@@ -18,7 +18,58 @@
     <!--HTML For The Game-->
       <main>
           <!--Insert Game Stuff Here-->
+          <h1 id="nums"></h1>
+          <!--Testing for loops for future cards-->
       </main>
         
     </body>
+
+    <script>
+      //JavaScript for the game functionality
+      let text = ""
+
+      //MAYBE USE 'document.write("<html id="give img id"></html>")' to show images
+      /**
+      for (var i = 0; i < 10; i++) {
+        text += "\tNumber" + i
+      }
+      document.getElementById("nums").innerHTML = text
+      */
+
+      //document.write("<h1 id='img'>image</h1>") //You're able to connect to css through this and use ids!
+
+
+      //THE CODE
+
+      function clickCard() {
+        //WE NEED TO APPEND TO CURRENT DOC OR A WHOLE NEW ONE WILL BE CREATED!!
+        document.body.append("Click")
+      }
+
+      /**
+       * SO FROM WHAT WE LEARN CREATE ARRAYS WITH LIST OBJECTS AND CALL THE REFERENCES OF THE LINK TO DISPLAY THEM
+       * AND YOU CAN ADD CLICKABLE EVENTS TO THEM TO RESPOND TO WHAT'S GOING ON, AND ALSO TRY AND MAKE IT TO WHERE
+       * A CARD IS A WHOLE OBJECT INLCUDING THE SRC LINK, CARD NUMBER, COLOR, ETC...
+      */
+      //Creating a variable with an image
+      var img = document.createElement("img")
+
+      /**Like in this example we can use looping through list of card references through something like
+       * something like the the variable below, except try an make each an object or have an initial list of 
+       * objects to work with making the card link card.imgLink, or something to that manner
+      */
+      let card = "blueFive.jpg"
+      img.src = "/img/BlueCards/" + card
+      img.width = 200
+      img.height = 400
+      img.addEventListener("click", function() {
+        //document.body.append("Click")
+
+        //Or do this, you can call other functions outside here
+        clickCard()
+
+      })
+      document.body.appendChild(img);
+      //document.write(img)
+    </script>
 </html>

@@ -18,3 +18,8 @@ header {
     -webkit-text-stroke: .5px red;
     -webkit-text-fill-color: white;
 }
+
+/*CSS for card stuff*/
+#img {
+    color: red;
+}
