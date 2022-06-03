@@ -41,35 +41,658 @@
 
       //THE CODE
 
+      //Global variables
+
+      //The card list for total cards we'll have
+      const playingCards = []
+
+
+      //Functions
+
+      //Function that performs when a card is clicked
       function clickCard() {
         //WE NEED TO APPEND TO CURRENT DOC OR A WHOLE NEW ONE WILL BE CREATED!!
         document.body.append("Click")
       }
 
+      //Function to create all of the card objects for all colors and types and adding them to the card list
+      function createCardList() {
+
+        //Current number that we're counting for the card
+        var currNum = ""
+
+        //List of all the color strings
+        const colors = ["blue", "green", "red", "yellow"]
+
+        //Loop for creating the color cards (52 color cards)
+        for (var i = 0; i <= 12; i++) {
+          //If i is on 0 add card one for each color to the pile
+          if (i == 0) {
+            //Current number is on zero
+            currNum = "Zero"
+
+            //Create each zero object 
+            //Blue
+            const blueZero = {
+              color: "blue",
+              number: "zero",
+              imgLink: "blueZero.jpg"
+            }
+            playingCards.push(blueZero)
+
+            //Green
+            const greenZero = {
+              color: "green",
+              number: "zero",
+              imgLink: "greenZero.jpg"
+            }
+            playingCards.push(greenZero)
+
+
+            //Red
+            const redZero = {
+              color: "red",
+              number: "zero",
+              imgLink: "redZero.jpg"
+            }
+            playingCards.push(redZero)
+
+            //Yellow
+            const yellowZero = {
+              color: "yellow",
+              number: "zero",
+              imgLink: "yellowZero.jpg"
+            }
+            playingCards.push(yellowZero)
+
+
+
+          } else if (i == 1) {
+            //Current number is on one
+            currNum = "One"
+
+            //Create each one object 
+            //Blue
+            const blueOne = {
+              color: "blue",
+              number: "one",
+              imgLink: "blueOne.jpg"
+            }
+            playingCards.push(blueOne)
+
+            //Green
+            const greenOne = {
+              color: "green",
+              number: "one",
+              imgLink: "greenOne.jpg"
+            }
+            playingCards.push(greenOne)
+
+
+            //Red
+            const redOne = {
+              color: "red",
+              number: "one",
+              imgLink: "redOne.jpg"
+            }
+            playingCards.push(redOne)
+
+            //Yellow
+            const yellowOne = {
+              color: "yellow",
+              number: "one",
+              imgLink: "yellowOne.jpg"
+            }
+            playingCards.push(yellowOne)
+
+          } else if (i == 2) {
+            //Current number is on two
+            currNum = "Two"
+
+            //Create each two object 
+            //Blue
+            const blueTwo = {
+              color: "blue",
+              number: "two",
+              imgLink: "blueTwo.jpg"
+            }
+            playingCards.push(blueTwo)
+
+            //Green
+            const greenTwo = {
+              color: "green",
+              number: "two",
+              imgLink: "greenTwo.jpg"
+            }
+            playingCards.push(greenTwo)
+
+
+            //Red
+            const redTwo = {
+              color: "red",
+              number: "two",
+              imgLink: "redTwo.jpg"
+            }
+            playingCards.push(redTwo)
+
+            //Yellow
+            const yellowTwo = {
+              color: "yellow",
+              number: "two",
+              imgLink: "yellowTwo.jpg"
+            }
+            playingCards.push(yellowTwo)
+
+          } else if (i == 3) {
+            //Currrent number is on three
+            currNum = "Three"
+
+            //Create each three object 
+            //Blue
+            const blueThree = {
+              color: "blue",
+              number: "three",
+              imgLink: "blueThree.jpg"
+            }
+            playingCards.push(blueThree)
+
+            //Green
+            const greenThree = {
+              color: "green",
+              number: "three",
+              imgLink: "greenThree.jpg"
+            }
+            playingCards.push(greenThree)
+
+
+            //Red
+            const redThree = {
+              color: "red",
+              number: "three",
+              imgLink: "redThree.jpg"
+            }
+            playingCards.push(redThree)
+
+            //Yellow
+            const yellowThree = {
+              color: "yellow",
+              number: "three",
+              imgLink: "yellowThree.jpg"
+            }
+            playingCards.push(yellowThree)
+
+          } else if (i == 4) {
+            //Currrent number is on four
+
+            //Create each four object 
+            //Blue
+            const blueFour = {
+              color: "blue",
+              number: "four",
+              imgLink: "blueFour.jpg"
+            }
+            playingCards.push(blueFour)
+
+            //Green
+            const greenFour = {
+              color: "green",
+              number: "four",
+              imgLink: "greenFour.jpg"
+            }
+            playingCards.push(greenFour)
+
+            //Red
+            const redFour = {
+              color: "red",
+              number: "four",
+              imgLink: "redFour.jpg"
+            }
+            playingCards.push(redFour)
+
+            //Yellow
+            const yellowFour = {
+              color: "yellow",
+              number: "four",
+              imgLink: "yellowFour.jpg"
+            }
+            playingCards.push(yellowFour)
+            currNum = "Four"
+
+          } else if (i == 5) {
+            currNum = "Five"
+
+            //Create each five object 
+            //Blue
+            const blueFive = {
+              color: "blue",
+              number: "five",
+              imgLink: "blueFive.jpg"
+            }
+            playingCards.push(blueFive)
+
+            //Green
+            const greenFive = {
+              color: "green",
+              number: "five",
+              imgLink: "greenFive.jpg"
+            }
+            playingCards.push(greenFive)
+
+            //Red
+            const redFive = {
+              color: "red",
+              number: "five",
+              imgLink: "redFive.jpg"
+            }
+            playingCards.push(redFive)
+
+            //Yellow
+            const yellowFive = {
+              color: "yellow",
+              number: "five",
+              imgLink: "yellowFive.jpg"
+            }
+            playingCards.push(yellowFive)
+
+          } else if (i == 6) {
+            currNum = "Six"
+
+            //Create each six object 
+            //Blue
+            const blueSix = {
+              color: "blue",
+              number: "six",
+              imgLink: "blueSix.jpg"
+            }
+            playingCards.push(blueSix)
+
+            //Green
+            const greenSix = {
+              color: "green",
+              number: "six",
+              imgLink: "greenSix.jpg"
+            }
+            playingCards.push(greenSix)
+
+            //Red
+            const redSix = {
+              color: "red",
+              number: "six",
+              imgLink: "redSix.jpg"
+            }
+            playingCards.push(redSix)
+
+            //Yellow
+            const yellowSix = {
+              color: "yellow",
+              number: "six",
+              imgLink: "yellowSix.jpg"
+            }
+            playingCards.push(yellowSix)
+
+          } else if (i == 7) {
+            currNum = "Seven"
+
+            //Create each seven object 
+            //Blue
+            const blueSeven = {
+              color: "blue",
+              number: "seven",
+              imgLink: "blueSeven.jpg"
+            }
+            playingCards.push(blueSeven)
+
+            //Green
+            const greenSeven = {
+              color: "green",
+              number: "seven",
+              imgLink: "greenSeven.jpg"
+            }
+            playingCards.push(greenSeven)
+
+            //Red
+            const redSeven = {
+              color: "red",
+              number: "seven",
+              imgLink: "redSeven.jpg"
+            }
+            playingCards.push(redSeven)
+
+            //Yellow
+            const yellowSeven = {
+              color: "yellow",
+              number: "seven",
+              imgLink: "yellowSeven.jpg"
+            }
+            playingCards.push(yellowSeven)
+
+            
+          } else if (i == 8) {
+            currNum = "Eight"
+
+            //Create each eight object 
+            //Blue
+            const blueEight = {
+              color: "blue",
+              number: "eight",
+              imgLink: "blueEight.jpg"
+            }
+            playingCards.push(blueEight)
+
+            //Green
+            const greenEight = {
+              color: "green",
+              number: "eight",
+              imgLink: "greenEight.jpg"
+            }
+            playingCards.push(greenEight)
+
+            //Red
+            const redEight = {
+              color: "red",
+              number: "eight",
+              imgLink: "redEight.jpg"
+            }
+            playingCards.push(redEight)
+
+            //Yellow
+            const yellowEight = {
+              color: "yellow",
+              number: "eight",
+              imgLink: "yellowEight.jpg"
+            }
+            playingCards.push(yellowEight)
+
+          } else if (i == 9) {
+            currNum = "Nine"
+
+            //Create each nine object 
+            //Blue
+            const blueNine = {
+              color: "blue",
+              number: "nine",
+              imgLink: "blueNine.jpg"
+            }
+            playingCards.push(blueNine)
+
+            //Green
+            const greenNine = {
+              color: "green",
+              number: "nine",
+              imgLink: "greenNine.jpg"
+            }
+            playingCards.push(greenNine)
+
+            //Red
+            const redNine = {
+              color: "red",
+              number: "nine",
+              imgLink: "redNine.jpg"
+            }
+            playingCards.push(redNine)
+
+            //Yellow
+            const yellowNine = {
+              color: "yellow",
+              number: "nine",
+              imgLink: "yellowNine.jpg"
+            }
+            playingCards.push(yellowNine)
+
+          } else if (i == 10) {
+            //Current number is on a skip
+            currNum = "Skip"
+
+            //Create each skip object 
+            //Blue
+            const blueSkip = {
+              color: "blue",
+              number: "skip",
+              imgLink: "blueSkip.jpg"
+            }
+            playingCards.push(blueSkip)
+
+            //Green
+            const greenSkip = {
+              color: "green",
+              number: "skip",
+              imgLink: "greenSkip.jpg"
+            }
+            playingCards.push(greenSkip)
+
+            //Red
+            const redSkip = {
+              color: "red",
+              number: "skip",
+              imgLink: "redSkip.jpg"
+            }
+            playingCards.push(redSkip)
+
+            //Yellow
+            const yellowSkip = {
+              color: "yellow",
+              number: "skip",
+              imgLink: "yellowSkip.jpg"
+            }
+            playingCards.push(yellowSkip)
+
+          } else if (i == 11) {
+            //Current number is on a reverse
+            currNum = "Reverse"
+
+            //Create each six object 
+            //Blue
+            const blueReverse = {
+              color: "blue",
+              number: "reverse",
+              imgLink: "blueReverse.jpg"
+            }
+            playingCards.push(blueReverse)
+
+            //Green
+            const greenReverse = {
+              color: "green",
+              number: "reverse",
+              imgLink: "greenReverse.jpg"
+            }
+            playingCards.push(greenReverse)
+
+            //Red
+            const redReverse = {
+              color: "red",
+              number: "reverse",
+              imgLink: "redReverse.jpg"
+            }
+            playingCards.push(redReverse)
+
+            //Yellow
+            const yellowReverse = {
+              color: "yellow",
+              number: "reverse",
+              imgLink: "yellowReverse.jpg"
+            }
+            playingCards.push(yellowReverse)
+
+          } else if (i == 12) {
+            //Current number is on a plus 2
+            currNum = "PlusTwo"
+          
+            //Create each six object 
+            //Blue
+            const bluePlusTwo = {
+              color: "blue",
+              number: "PlusTwo",
+              imgLink: "bluePlusTwo.jpg"
+            }
+            playingCards.push(bluePlusTwo)
+
+            //Green
+            const greenPlusTwo = {
+              color: "green",
+              number: "PlusTwo",
+              imgLink: "greenPlusTwo.jpg"
+            }
+            playingCards.push(greenPlusTwo)
+
+            //Red
+            const redPlusTwo = {
+              color: "red",
+              number: "PlusTwo",
+              imgLink: "redPlusTwo.jpg"
+            }
+            playingCards.push(redPlusTwo)
+
+            //Yellow
+            const yellowPlusTwo = {
+              color: "yellow",
+              number: "PlusTwo",
+              imgLink: "yellowPlusTwo.jpg"
+            }
+            playingCards.push(yellowPlusTwo)
+        }
+      }
+
+        //Create four different wild cards and add them (was going to do a loop but it kept crashing the website then later found out that we were still in the previous loop for whatever reason this can change.)
+        const plusFour = {
+            color: "wild",
+            number: "PlusFour",
+            imgLink: "PlusFour.jpg"
+        }
+        playingCards.push(plusFour)
+
+        //Create change color object and add to list
+        const changeColor = {
+          color: "wild",
+          number: "ChangeColor",
+          imgLink: "ChangeColor.jpg"
+        }
+        playingCards.push(changeColor)
+
+        //Two three four
+        const plusFour2 = {
+            color: "wild",
+            number: "PlusFour",
+            imgLink: "PlusFour.jpg"
+        }
+        playingCards.push(plusFour2)
+
+        //Create change color object and add to list
+        const changeColor2 = {
+          color: "wild",
+          number: "ChangeColor",
+          imgLink: "ChangeColor.jpg"
+        }
+        playingCards.push(changeColor2)
+      
+
+      const plusFour3 = {
+            color: "wild",
+            number: "PlusFour",
+            imgLink: "PlusFour.jpg"
+        }
+        playingCards.push(plusFour3)
+
+        //Create change color object and add to list
+        const changeColor3 = {
+          color: "wild",
+          number: "ChangeColor",
+          imgLink: "ChangeColor.jpg"
+        }
+        playingCards.push(changeColor3)
+
+        const plusFour4 = {
+            color: "wild",
+            number: "PlusFour",
+            imgLink: "PlusFour.jpg"
+        }
+        playingCards.push(plusFour4)
+
+        //Create change color object and add to list
+        const changeColor4 = {
+          color: "wild",
+          number: "ChangeColor",
+          imgLink: "ChangeColor.jpg"
+        }
+        playingCards.push(changeColor4)
+      
+    }
+    
+    
       /**
        * SO FROM WHAT WE LEARN CREATE ARRAYS WITH LIST OBJECTS AND CALL THE REFERENCES OF THE LINK TO DISPLAY THEM
        * AND YOU CAN ADD CLICKABLE EVENTS TO THEM TO RESPOND TO WHAT'S GOING ON, AND ALSO TRY AND MAKE IT TO WHERE
        * A CARD IS A WHOLE OBJECT INLCUDING THE SRC LINK, CARD NUMBER, COLOR, ETC...
       */
-      //Creating a variable with an image
-      var img = document.createElement("img")
+      
+
+      //Get the array full of the cards using the createCardList() function
+      createCardList()
+
+      //Check the card list
+      //console.log("All the cards:", playingCards)
+
+    
+      //Lets see if we can select all the cards and display them
+      for (var card = 0; card < 60; card++) {
+        //Creating a variable with an image
+        var img = document.createElement("img")
+        console.log("Current card:", playingCards[card].imgLink)
+        let currCard = playingCards[card].imgLink
+        console.log("Type of for currCard:", typeof(currCard)) //Get the type for the currCard variable
+
+        
+        //If we're using blue cards use the blue cards folder... etc
+        if (playingCards[card].color == "blue") {
+          img.src = "/img/BlueCards/" + currCard
+        } else if (playingCards[card].color == "red") {
+          img.src = "/img/RedCards/" + currCard
+
+        } else if (playingCards[card].color == "green") {
+          img.src = "/img/GreenCards/" + currCard
+
+        } else if (playingCards[card].color == "yellow") {
+          img.src = "/img/YellowCards/" + currCard
+
+        } else if (playingCards[card].color == "wild") {
+          img.src = "/img/WildCards/" + currCard
+        }
+        console.log("image source:", img.src)
+        img.width = 150
+        img.height = 300
+        img.addEventListener("click", function() {
+          //document.body.append("Click")
+          //Or do this, you can call other functions outside here
+          clickCard()
+        })
+        document.body.appendChild(img);
+        
+      }
+      
+      //Test with the card object WE ARE HERE
+      //console.log("Image link:", blueOne.imgLink)
 
       /**Like in this example we can use looping through list of card references through something like
        * something like the the variable below, except try an make each an object or have an initial list of 
        * objects to work with making the card link card.imgLink, or something to that manner
       */
-      let card = "blueFive.jpg"
-      img.src = "/img/BlueCards/" + card
-      img.width = 200
-      img.height = 400
+
+      //Have the back of the card represent a stack of cards, have the stack of cards be all the cards in a list
+      
+
+      //Practice Example
+      /**
+      let card = "blueTwo"
+      img.src = "/img/BlueCards/" + card + ".jpg"
+      img.width = 150
+      img.height =300
       img.addEventListener("click", function() {
         //document.body.append("Click")
-
         //Or do this, you can call other functions outside here
         clickCard()
-
       })
       document.body.appendChild(img);
       //document.write(img)
+      */
+    
     </script>
 </html>
