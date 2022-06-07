@@ -52,7 +52,10 @@
       //Function that performs when a card is clicked
       function clickCard() {
         //WE NEED TO APPEND TO CURRENT DOC OR A WHOLE NEW ONE WILL BE CREATED!!
-        document.body.append("Click")
+        //document.body.append("Click") TEST FOR CLICK ACTION!!
+
+        //Now lets see if we can get specific card info STUCK HERE!!
+        document.body.append("Card")
       }
 
       //Function to create all of the card objects for all colors and types and adding them to the card list
@@ -659,10 +662,17 @@
         console.log("image source:", img.src)
         img.width = 150
         img.height = 300
+        img.id = card
         img.addEventListener("click", function() {
-          //document.body.append("Click")
+
+
+          //THIS IS WHERE I LEFT OFF LAST!!
+          document.body.append("Click: " + currCard + " ") //THIS WORKED TO GET SPECIFIC CARD LINK WHEN CLICKING ON EACH DIFFERENT IMAGE!!! IT WOORRKED YAAY!! 6/7/2022
+          
+          
           //Or do this, you can call other functions outside here
-          clickCard()
+          //clickCard(img)
+          //console.log("The card:", card)
         })
         document.body.appendChild(img);
         
