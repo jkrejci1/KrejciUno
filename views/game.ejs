@@ -46,6 +46,9 @@
       //The card list for total cards we'll have
       const playingCards = []
 
+      //The cards that are currently in play (needs to be dynamic)
+      let playedCards = []
+
 
       //Functions
 
@@ -56,6 +59,19 @@
 
         //Now lets see if we can get specific card info STUCK HERE!!
         document.body.append("Card")
+      }
+
+      //Function that is used to shuffle the card array to get random cards
+      //Using the Fisher-Yates algorithm to shuffle the cards
+      function shuffleCards(cards) {
+        var j, x, i;
+        for (i = cards.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = cards[i];
+            cards[i] = cards[j];
+            cards[j] = x;
+        }
+        return cards;
       }
 
       //Function to create all of the card objects for all colors and types and adding them to the card list
@@ -631,32 +647,38 @@
       //Get the array full of the cards using the createCardList() function
       createCardList()
 
+      //Get an array of the one above but shuffled
+      let shuffledCards = shuffleCards(playingCards)
+      console.log("shuffled cards:", shuffledCards[0])
+
       //Check the card list
       //console.log("All the cards:", playingCards)
 
     
       //Lets see if we can select all the cards and display them
-      for (var card = 0; card < 60; card++) {
+      for (var card = 0; card <= 6; card++) {
         //Creating a variable with an image
         var img = document.createElement("img")
-        console.log("Current card:", playingCards[card].imgLink)
-        let currCard = playingCards[card].imgLink
+        console.log("Current card:", shuffledCards[card].imgLink)
+        let currCard = shuffledCards[card].imgLink
+        let currCardNum = shuffledCards[card].number
+        let currCardColor = shuffledCards[card].color
         console.log("Type of for currCard:", typeof(currCard)) //Get the type for the currCard variable
 
         
         //If we're using blue cards use the blue cards folder... etc
-        if (playingCards[card].color == "blue") {
+        if (shuffledCards[card].color == "blue") {
           img.src = "/img/BlueCards/" + currCard
-        } else if (playingCards[card].color == "red") {
+        } else if (shuffledCards[card].color == "red") {
           img.src = "/img/RedCards/" + currCard
 
-        } else if (playingCards[card].color == "green") {
+        } else if (shuffledCards[card].color == "green") {
           img.src = "/img/GreenCards/" + currCard
 
-        } else if (playingCards[card].color == "yellow") {
+        } else if (shuffledCards[card].color == "yellow") {
           img.src = "/img/YellowCards/" + currCard
 
-        } else if (playingCards[card].color == "wild") {
+        } else if (shuffledCards[card].color == "wild") {
           img.src = "/img/WildCards/" + currCard
         }
         console.log("image source:", img.src)
@@ -667,8 +689,12 @@
 
 
           //THIS IS WHERE I LEFT OFF LAST!!
-          document.body.append("Click: " + currCard + " ") //THIS WORKED TO GET SPECIFIC CARD LINK WHEN CLICKING ON EACH DIFFERENT IMAGE!!! IT WOORRKED YAAY!! 6/7/2022
-          
+          //Putting currCard gives clicked card img link 
+          //Putting currCardNum gives clicked card number or property for skips, wild, plus twos, reverse
+          //Putting currCardColor gives the color of a clicked card
+          document.body.append("Card Color: " + currCardColor + "\n") //THIS WORKED TO GET SPECIFIC CARD LINK WHEN CLICKING ON EACH DIFFERENT IMAGE!!! IT WOORRKED YAAY!! 6/7/2022
+          document.body.append("Card Number/Property: " + currCardNum + "\n")
+          document.body.append("Card Link: " + currCard + "\n")
           
           //Or do this, you can call other functions outside here
           //clickCard(img)
