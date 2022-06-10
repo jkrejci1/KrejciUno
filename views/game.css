@@ -23,3 +23,22 @@ header {
 #img {
     color: red;
 }
+
+/*Oppenent Card CSS*/
+#oppenCards {
+    position: relative;
+    top: 0px;
+}
+
+/*Card in play and deck CSS*/
+#playCards {
+    position: relative;
+    left: 200px;
+    top: -10px;
+}
+
+/*CSS for the users cards*/
+#userCards {
+    position: relative;
+    top: 0px;
+}
