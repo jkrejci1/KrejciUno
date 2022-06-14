@@ -933,5 +933,26 @@
       //document.write(img)
       */
     
+
+    /**Notes moving forward:
+     * If we aren't able to remove an oppenent card in the loop where a user clicks a card, then we can also just have
+     the user cards just be a bunch of random back facing cards in which the number of them needed is determined by the
+     the length of the oppenents cards array, replacing the inner html of those back 'oppenent' cards each time. This
+     way we can focus mainly on the backend when it comes to the oppenents moves instead of doing a bunch of unnecessary
+     front end development work working with back facing cards that contain the oppenents card information.
+
+     * Remember when a user puts down a wild card there needs to be functionality in the front and back end to change 
+     the color in play according to what the user changes it to, as well as being able to have the oppenent be able to
+     make the same decision somehow, maybe based on certain circumstances like picking the color they have the most of 
+     for example. For the user this can consist of some sort of pop up that lets you select the color you want to change
+     it to, then clicking a button when that decision has been made to update the current color in play, and this needs
+     to be updated in the backend before the oppenent makes their next move.
+
+     * When it comes to switching the current card in play VISUALLY in the HTML, take the current img and make that as
+     a new inner html then maybe add the 'deck' aka a backward facing card as an add child statement after switching out
+     the HTML for the current card in play. Then in the backend, update all the arrays necessary so that we are always 
+     working with correct data by updating it. 
+    */
     </script>
 </html>
+
