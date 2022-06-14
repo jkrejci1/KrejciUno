@@ -30,12 +30,13 @@
     <!--Div tag for the deck and playing cards-->
     <div id="playCards">
 
-      </div>
+    </div>
 
     <!--Div tag for the users cards-->
-      <div id="userCards">
+    <div id="userCards">
+      <h2 id="cardStatus"></h2>
+    </div>
 
-      </div>
     </body>
 
     <script>
@@ -68,6 +69,14 @@
 
       //The cards that the user currently has
       let userCards = []
+
+      //Variable to be used to determine the current color of the card in play (needs to be used so we can perform wild card situations)
+      //initialized as an empty string 
+      let colorPlaying = ""
+
+      //Also the current number or ability being played for further analysis
+      //REMEMBER THIS WILL TIE TO ITS PROPERTY AS WELL IF ITS A WILD/REVERSE/SKIP... CARD!!!!
+      let numberPlaying = ""
 
       //Functions
 
@@ -724,7 +733,7 @@
       var imgPlayed = document.createElement("img")
       //The source of the the first card in the shuffled card list is the one in play
 
-      //For the card in play we can't use a wild card or skips!! NEED TO FIX THIS!!
+      //For the card in play we can't use a wild card or skips!! FIXED!!
       //Run a loop that loops through the suffledCards array until you get a valid card then make it the image source
       //then add it to the playedCards array and 
 
@@ -766,9 +775,19 @@
 
             //This card also has to be accounted for current cards in play
             playedCards.push(shuffledCards[card])
+            
+            //This card will also be the current card in play so its color is what color that is currently valid
+            //so change the colorPlaying variable to its color
+            colorPlaying = shuffledCards[card].color
+
+            //Also check the number being played
+            numberPlaying = shuffledCards[card].number
+
+            //MAKE SURE TO DO BOTH ABOVE FOR VALIDNESS BEFOOORREE SPLICING THE ARRAY OR IT WILL TAKE THE NEXT CARD IN THAT POSITION!!!! FIXED!!
 
             //Now we need to remove the current card from the shuffled cards array
             shuffledCards.splice(card, 1)
+
             break
 
           }
@@ -776,11 +795,14 @@
 
       }
 
+      //Now lets check what the current color in play is to match for valid colors
+      //Also, now that we have this data we can put it to the screen for the user's reference for a next valid card!
+      //Show this information next to the deck of cards in the next set of code that does that
+      console.log("CURRENT VALID COLOR AND NUMBER AFTER STARTING THE GAME:", colorPlaying, numberPlaying)
       
       //Now check the shuffled cards array to make sure the one put down isn't in the array anymore
       console.log("THE ARRAY OF SHUFFLED CARDS AFTER REMOVING CURRENT ONE IN PLAY", shuffledCards)
       
-
       //Add an image of the back of a card next to the card in play for illusion of a deck
       var imgDeck = document.createElement("img")
       imgDeck.src = "/img/backCard.jpg"
@@ -790,6 +812,9 @@
 
       //Add this to the play cards div tag as well playCards
       document.getElementById("playCards").appendChild(imgDeck);
+
+      //Add the status of the game for the next valid color or number
+      document.getElementById("cardStatus").innerHTML = "Valid Color: " + colorPlaying + " Valid Number: " + numberPlaying
 
       //Then use the above loop to give the current user the cards they have
       //REMEMBER THE CURRENT CARD IN PLAY WILL BE THE LAST CARD IN THE PLAYEDCARDS LIST!!!!
@@ -832,13 +857,40 @@
           //Putting currCard gives clicked card img link 
           //Putting currCardNum gives clicked card number or property for skips, wild, plus twos, reverse
           //Putting currCardColor gives the color of a clicked card
-          document.body.append("Card Color: " + currCardColor + "\n") //THIS WORKED TO GET SPECIFIC CARD LINK WHEN CLICKING ON EACH DIFFERENT IMAGE!!! IT WOORRKED YAAY!! 6/7/2022
-          document.body.append("Card Number/Property: " + currCardNum + "\n")
-          document.body.append("Card Link: " + currCard + "\n")
+          //document.body.append("Card Color: " + currCardColor + "\n") //THIS WORKED TO GET SPECIFIC CARD LINK WHEN CLICKING ON EACH DIFFERENT IMAGE!!! IT WOORRKED YAAY!! 6/7/2022
+          //document.body.append("Card Number/Property: " + currCardNum + "\n")
+          //document.body.append("Card Link: " + currCard + "\n")
+
+          //NOW FOR THE REAL FUNCTIONALITY
+          console.log("Clicked Card Color: " + currCardColor + "\n")
+          console.log("Clicked Card Number/Property: " + currCardNum + "\n")
+          console.log("Clicked Card Link: " + currCard + "\n")
+
+          //Now lets see if the current card clicked can be used 
           
-          //Or do this, you can call other functions outside here
-          //clickCard(img)
-          //console.log("The card:", card)
+          //First lets check what the current card in play is
+          console.log("The card that is in play when we clicked this card: " + colorPlaying + " " + numberPlaying)
+
+          //Now if colorPlaying == color of current clicked card we can play it
+          if (currCardColor == colorPlaying) {
+            //Tell the console we have a valid card
+            console.log("Valid Card!")
+          
+          //If we have a card that's not the same color but the same number/property it is valid
+          } else if (currCardNum == numberPlaying) {
+            console.log("Valid Card!")
+
+          //If we don't have the above but we're playing a wild card it's valid!
+          //Remember it's wild value is under .color and its number will tell you if it's a plus four or change color
+          } else if (currCardColor == "wild") {
+            console.log("Valid Card!")
+          
+          //If none of the above checks out, we have an invalid card!
+          } else {
+            console.log("Invalid Card!")
+          }
+         
+          
         })
 
         //Try and put the images in a div tag
