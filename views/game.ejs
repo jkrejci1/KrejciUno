@@ -700,7 +700,7 @@
         img.height = 225
         img.id = card
         img.className = "card" //Now use .card in css to mess with the css of these cards in that page
-
+        
         //Remove click event after adding the code to the user card version
         img.addEventListener("click", function() {
 
@@ -813,6 +813,107 @@
       //Add this to the play cards div tag as well playCards
       document.getElementById("playCards").appendChild(imgDeck);
 
+      //Add an event listener to the deck in which clicking it will add card to users card array list and show it
+      imgDeck.addEventListener("click", function() {
+        console.log("USER ARRAY BEFORE ADDING A NEW CARD:", userCards)
+        console.log("SHUFFLED CARDS ARRAY BEFORE REMOVING A CARD:", shuffledCards)
+
+        //Take the last card in the shuffled cards array (length of shuffled cards - 1) set (use pop())
+        let newCard = shuffledCards.pop()
+
+        //Add it to the user cards array
+        userCards.push(newCard)
+
+        //So now the new card's index would be the lenght of the user's list minus 1
+        let card = userCards.length - 1
+
+        //Show it on the screen append child to user screen
+        //Creating a variable with an image
+        var img = document.createElement("img")
+        let currCard = userCards[card].imgLink
+        let currCardNum = userCards[card].number
+        let currCardColor = userCards[card].color
+        
+        //If we're using blue cards use the blue cards folder... etc
+        
+        if (userCards[card].color == "blue") {
+          img.src = "/img/BlueCards/" + currCard
+        } else if (userCards[card].color == "red") {
+          img.src = "/img/RedCards/" + currCard
+
+        } else if (userCards[card].color == "green") {
+          img.src = "/img/GreenCards/" + currCard
+
+        } else if (userCards[card].color == "yellow") {
+          img.src = "/img/YellowCards/" + currCard
+
+        } else if (userCards[card].color == "wild") {
+          img.src = "/img/WildCards/" + currCard
+        }
+        
+        img.width = 112.5
+        img.height = 225
+        img.id = card
+        img.className = "cardUser" //Now use .card in css to mess with the css of these cards in that page
+
+        //Now add the card to the screen where the user's cards are
+        document.getElementById("userCards").appendChild(img);
+
+        //Remove click event after adding the code to the user card version
+        img.addEventListener("click", function() {
+
+
+          //Putting currCard gives clicked card img link 
+          //Putting currCardNum gives clicked card number or property for skips, wild, plus twos, reverse
+          //Putting currCardColor gives the color of a clicked card
+          //document.body.append("Card Color: " + currCardColor + "\n") //THIS WORKED TO GET SPECIFIC CARD LINK WHEN CLICKING ON EACH DIFFERENT IMAGE!!! IT WOORRKED YAAY!! 6/7/2022
+          //document.body.append("Card Number/Property: " + currCardNum + "\n")
+          //document.body.append("Card Link: " + currCard + "\n")
+
+          //NOW FOR THE REAL FUNCTIONALITY
+          console.log("Clicked Card Color: " + currCardColor + "\n")
+          console.log("Clicked Card Number/Property: " + currCardNum + "\n")
+          console.log("Clicked Card Link: " + currCard + "\n")
+
+          //Now lets see if the current card clicked can be used using a variable that changes to "valid" when it's valid
+          let validity = ""
+
+          //First lets check what the current card in play is
+          console.log("The card that is in play when we clicked this card: " + colorPlaying + " " + numberPlaying)
+
+          //Now if colorPlaying == color of current clicked card we can play it
+          if (currCardColor == colorPlaying) {
+            //Tell the console we have a valid card
+            console.log("Valid Card!")
+            validity = "valid"
+
+          //If we have a card that's not the same color but the same number/property it is valid
+          } else if (currCardNum == numberPlaying) {
+            console.log("Valid Card!")
+            validity = "valid"
+
+          //If we don't have the above but we're playing a wild card it's valid!
+          //Remember it's wild value is under .color and its number will tell you if it's a plus four or change color
+          } else if (currCardColor == "wild") {
+            console.log("Valid Card!")
+            validity = "valid"
+
+          //If none of the above checks out, we have an invalid card!
+          } else {
+            console.log("Invalid Card!")
+            validity = "invalid"
+          } 
+
+          //Now take action according to validity
+          if (validity == "valid") {
+            //
+          }
+
+          //If it was a valid move, add it to the cards in play array and remove it from the user cards array then add the 
+          //image object to the cards in play div tag
+          })
+
+      })
       //Add the status of the game for the next valid color or number
       document.getElementById("cardStatus").innerHTML = "Valid Color: " + colorPlaying + " Valid Number: " + numberPlaying
 
@@ -850,6 +951,15 @@
         img.id = card
         img.className = "cardUser" //Now use .card in css to mess with the css of these cards in that page
 
+        //Try and put the images in a div tag
+        document.getElementById("userCards").appendChild(img);
+        
+        //Add the current card to the userCards list
+        userCards.push(shuffledCards[card])
+
+        //Remove the current card that was in the the shuffled card deck that was just passed out
+        shuffledCards.shift()
+
         //Remove click event after adding the code to the user card version
         img.addEventListener("click", function() {
 
@@ -866,7 +976,8 @@
           console.log("Clicked Card Number/Property: " + currCardNum + "\n")
           console.log("Clicked Card Link: " + currCard + "\n")
 
-          //Now lets see if the current card clicked can be used 
+          //Now lets see if the current card clicked can be used using a variable that changes to "valid" when it's valid
+          let validity = ""
           
           //First lets check what the current card in play is
           console.log("The card that is in play when we clicked this card: " + colorPlaying + " " + numberPlaying)
@@ -875,34 +986,37 @@
           if (currCardColor == colorPlaying) {
             //Tell the console we have a valid card
             console.log("Valid Card!")
-          
+            validity = "valid"
+
           //If we have a card that's not the same color but the same number/property it is valid
           } else if (currCardNum == numberPlaying) {
             console.log("Valid Card!")
+            validity = "valid"
 
           //If we don't have the above but we're playing a wild card it's valid!
           //Remember it's wild value is under .color and its number will tell you if it's a plus four or change color
           } else if (currCardColor == "wild") {
             console.log("Valid Card!")
+            validity = "valid"
           
           //If none of the above checks out, we have an invalid card!
           } else {
             console.log("Invalid Card!")
+            validity = "invalid"
+          } 
+
+          //Now take action according to validity
+          if (validity == "valid") {
+            //
           }
-         
+
+          //If it was a valid move, add it to the cards in play array and remove it from the user cards array then add the 
+          //REMEMBER WE'RE GONNA HAVE TO THEN UPDATE THE CLICK FUNCTION IN THE ONE WHERE WE ADD A CARD WHEN CLICKING THE DECK
+          //SO I MIGHT NEED TO MAKE THIS A FUNCTION AS THE FUNCTIONALITY OF THE TWO WOULD BE IDENTICAL SUPERFLUOS SETS OF CODE
           
+          //image object to the cards in play div tag
         })
 
-        //Try and put the images in a div tag
-        document.getElementById("userCards").appendChild(img);
-
-        //document.body.appendChild(img);
-        
-        //Add the current card to the userCards list
-        userCards.push(shuffledCards[card])
-
-        //Remove the current card that was in the the shuffled card deck that was just passed out
-        shuffledCards.shift()
       }
       
       //Now check the deck when you give out the cards to the user
@@ -952,6 +1066,9 @@
      a new inner html then maybe add the 'deck' aka a backward facing card as an add child statement after switching out
      the HTML for the current card in play. Then in the backend, update all the arrays necessary so that we are always 
      working with correct data by updating it. 
+
+     * Also should add functionality to where if you click the deck it adds the next card in the shuffled cards array to the 
+     current user's array and show that card on the screen.
     */
     </script>
 </html>
